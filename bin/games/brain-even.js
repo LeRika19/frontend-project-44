@@ -1,15 +1,14 @@
 #!/usr/bin/env node
 
 import readlineSync from 'readline-sync';
+import greetUser from '../../src/cli.js';
 
 // Функция для проверки на четность
 const isEven = (num) => num % 2 === 0;
 
 // Функция для запуска игры
 const playGame = () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
+  greetUser();
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
   let correctAnswers = 0;
