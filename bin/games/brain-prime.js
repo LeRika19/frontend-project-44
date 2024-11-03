@@ -1,14 +1,20 @@
 #!/usr/bin/env node
 
 import readlineSync from 'readline-sync';
-import greetUser from '../../src/cli.js';
+import { greetUser, getRandomInt } from '../../src/cli.js';
+import compareAnswers from '../../src/index.js';
 
 // Функция для проверки, является ли число простым
-function isPrime(num) {
+//Math.sqrt(num) проверяет есть ли у числа еще делители если нет то это простое число
+const isPrime = (num) => {
     if (num <= 1) return false;
+
     for (let i = 2; i <= Math.sqrt(num); i++) {
-        if (num % i === 0) return false;
+        if (num % i === 0) {
+            return false;
+        }
     }
+
     return true;
 }
 
@@ -17,23 +23,30 @@ function playPrimeGame() {
     const userName = greetUser();
     console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
 
-    let score = 0;
+    let correctAnswersCount = 0;
+    const roundsToWin = 3;
 
-    for (let i = 0; i < 3; i++) {
-        const randomNumber = Math.floor(Math.random() * 100) + 1; // Генерируем случайное число от 1 до 100
-        const correctAnswer = isPrime(randomNumber) ? "yes" : "no";
-        const userAnswer = readlineSync.question(`Question: ${randomNumber}\nYour answer:`);
+    while (correctAnswersCount < roundsToWin) {
+        const randomNumber = getRandomInt(1, 100);
+        let correctAnswer;
 
-        if (userAnswer === correctAnswer) {
-            console.log("Correct!");
-            score++;
+        if (isPrime(randomNumber)) {
+            correctAnswer = 'yes';
         } else {
-            console.log(`Wrong! The correct answer was '${correctAnswer}'.`);
-            console.log(`Let's try again, ${userName}!`);
+            correctAnswer = 'no';
+        }
+        const userAnswer = readlineSync.question(`Question: ${randomNumber}\nYour answer:`);
+        
+        const isCorrect = compareAnswers(userAnswer, correctAnswer, userName);
+        if (isCorrect === true) {
+            correctAnswersCount += 1;
+        } else {
+            return;
         }
     }
 
-    console.log(`Your score: ${score}/3`);
+
+    console.log(`Congratulations, ${userName}!`);
 }
 
 // Запускаем игру
