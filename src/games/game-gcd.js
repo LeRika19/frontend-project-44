@@ -15,7 +15,7 @@ const calculateGcd = (num1, num2) => {
 }
 
 // Основная функция игры
-function brainGcdGame() {
+export const brainGcdGame = () => {
     const userName = greetUser();
     console.log('Find the greatest common divisor of given numbers.');
 
@@ -42,6 +42,3 @@ function brainGcdGame() {
 
     console.log(`Congratulations, ${userName}!`);
 }
-
-// Запуск игры
-brainGcdGame();

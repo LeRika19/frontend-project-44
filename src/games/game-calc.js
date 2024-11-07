@@ -42,7 +42,7 @@ const calculate = (number1, number2, oper) => {
 //Если неверный — выводится правильный ответ и сообщение об окончании игры.
 //Если все ответы верны, поздравляет пользователя с победой.
 //Игра завершится, если игрок даст неверный ответ.
-const brainCalcGame = () => {
+export const brainCalcGame = () => {
     const userName = greetUser();
     console.log('What is the result of the expression?');
 
@@ -66,6 +66,3 @@ const brainCalcGame = () => {
     }
     console.log(`Congratulations, ${userName}!`);
 }
-
-// Запуск игры
-brainCalcGame();

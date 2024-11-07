@@ -26,7 +26,7 @@ const generateProgression = () => {
 };
 
 // Функция для игры
-const brainProgression = () => {
+export const brainProgression = () => {
     const userName = greetUser();
     console.log("What number is missing in the progression?");
 
@@ -49,8 +49,4 @@ const brainProgression = () => {
     }
 
     console.log(`Congratulations, ${userName}!`);
-};
-
-
-// Запускаем игру
-brainProgression();
+}
