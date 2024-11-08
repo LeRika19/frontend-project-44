@@ -8,20 +8,19 @@ import compareAnswers from '../index.js';
 const calculate = (number1, number2, oper) => {  
   let result;
   switch (oper) {
-      case '+':
-          result = number1 + number2;
-          break;
-      case '-':
-          result = number1 - number2;
-          break;
-      case '*':
-          result = number1 * number2;
-          break;
-      default:
-          result = null;
-          break;
+    case '+':
+        result = number1 + number2;
+        break;
+    case '-':
+        result = number1 - number2;
+        break;
+    case '*':
+        result = number1 * number2;
+        break;
+    default:
+        result = null;
+        break;
     }
-    
     return result;
 };
 
@@ -48,18 +47,18 @@ export const brainCalcGame = () => {
   let correctAnswersCount = 0;
   const roundsToWin = 3;
 
-    while (correctAnswersCount < roundsToWin) {
-      const { expression, correctAnswer } = generateExpression();
-      console.log(`Question: ${expression}`);
-      let userAnswer = readlineSync.question('Your answer: ');
-      userAnswer = parseInt(userAnswer, 10);
+  while (correctAnswersCount < roundsToWin) {
+    const { expression, correctAnswer } = generateExpression();
+    console.log(`Question: ${expression}`);
+    let userAnswer = readlineSync.question('Your answer: ');
+    userAnswer = parseInt(userAnswer, 10);
 
-      const isCorrect = compareAnswers(userAnswer, correctAnswer, userName);
-      if (isCorrect === true) {
-          correctAnswersCount += 1;
-        } else {
-          return;
-        }
+    const isCorrect = compareAnswers(userAnswer, correctAnswer, userName);
+    if (isCorrect === true) {
+        correctAnswersCount += 1;
+    } else {
+        return;
     }
-    console.log(`Congratulations, ${userName}!`);
+    }
+  console.log(`Congratulations, ${userName}!`);
 };

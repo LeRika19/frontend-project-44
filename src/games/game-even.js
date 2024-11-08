@@ -5,9 +5,7 @@ import compareAnswers from '../index.js';
 // Функция для проверки на четность
 const isEven = (num) => {
   return num % 2 === 0;
-
 };
-
 
 // Функция для запуска игры
 export const playGame = () => {
@@ -17,7 +15,7 @@ export const playGame = () => {
   let correctAnswersCount = 0;
   const roundsToWin = 3;
 
-    // Игра продолжается до тех пор, пока пользователь не ответит правильно 3 раза
+// Игра продолжается до тех пор, пока пользователь не ответит правильно 3 раза
     while (correctAnswersCount < roundsToWin) {
       const randomNumber = getRandomInt(1, 100);
       console.log(`Question: ${randomNumber}`);
