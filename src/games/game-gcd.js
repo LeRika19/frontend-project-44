@@ -26,8 +26,8 @@ const brainGcdGame = () => {
     const num1 = getRandomInt(1, 100);
     const num2 = getRandomInt(1, 100);
 
-    const correctAnswer = calculateGcd(newNum1, newNum2);
-    console.log(`Question: ${newNum1} ${newNum2}`);
+    const correctAnswer = calculateGcd(num1, num2);
+    console.log(`Question: ${num1} ${num2}`);
     let userAnswer = readlineSync.question('Your answer: ');
 
     userAnswer = parseInt(userAnswer, 10);    
