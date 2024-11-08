@@ -1,35 +1,38 @@
 import readlineSync from 'readline-sync';
-import { greetUser, getRandomInt } from '../../src/cli.js';
-import compareAnswers from '../../src/index.js';
+import { greetUser, getRandomInt } from '../cli.js';
+import compareAnswers from '../index.js';
 
 //  Функция generateExpression() - создаёт случайное математическое выражение.
 //  Она выбирает случайные числа и операцию (+, -, *), затем вычисляет правильный ответ.
 
 const calculate = (number1, number2, oper) => {  
-    let result;
-    switch (oper) {
-        case '+':
-            result = number1 + number2;
-            break;
-        case '-':
-            result = number1 - number2;
-            break;
-        case '*':
-            result = number1 * number2;
-            break;
+  let result;
+  switch (oper) {
+      case '+':
+          result = number1 + number2;
+          break;
+      case '-':
+          result = number1 - number2;
+          break;
+      case '*':
+          result = number1 * number2;
+          break;
+      default:
+          result = null;
+          break;
     }
     
     return result;
 };
 
 const generateExpression = () => {
-    const num1 = getRandomInt(1, 50);
-    const num2 = getRandomInt(1, 50);
-    const operators = ['+', '-', '*'];
-    const operator = operators[getRandomInt(0, operators.length - 1)];
-    const correctAnswer = calculate(num1, num2, operator);
+  const num1 = getRandomInt(1, 50);
+  const num2 = getRandomInt(1, 50);
+  const operators = ['+', '-', '*'];
+  const operator = operators[getRandomInt(0, operators.length - 1)];
+  const correctAnswer = calculate(num1, num2, operator);
   
-    return { expression: `${num1} ${operator} ${num2}`, correctAnswer };
+  return { expression: `${num1} ${operator} ${num2}`, correctAnswer };
   };
 
 //  Функция brainCalcGame():
@@ -52,7 +55,7 @@ export const brainCalcGame = () => {
       userAnswer = parseInt(userAnswer, 10);
 
       const isCorrect = compareAnswers(userAnswer, correctAnswer, userName);
-        if (isCorrect === true) {
+      if (isCorrect === true) {
           correctAnswersCount += 1;
         } else {
           return;
