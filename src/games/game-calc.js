@@ -4,24 +4,23 @@ import compareAnswers from '../index.js';
 
 //  Функция generateExpression() - создаёт случайное математическое выражение.
 //  Она выбирает случайные числа и операцию (+, -, *), затем вычисляет правильный ответ.
-
 const calculate = (number1, number2, oper) => {  
   let result;
   switch (oper) {
     case '+':
-        result = number1 + number2;
-        break;
+      result = number1 + number2;
+      break;
     case '-':
-        result = number1 - number2;
-        break;
+      result = number1 - number2;
+      break;
     case '*':
-        result = number1 * number2;
-        break;
+      result = number1 * number2;
+      break;
     default:
-        result = null;
-        break;
-    }
-    return result;
+      result = null;
+      break;
+  }
+  return result;
 };
 
 const generateExpression = () => {
@@ -32,7 +31,7 @@ const generateExpression = () => {
   const correctAnswer = calculate(num1, num2, operator);
   
   return { expression: `${num1} ${operator} ${num2}`, correctAnswer };
-  };
+};
 
 //  Функция brainCalcGame():
 //  Выводит приветствие, запрашивает имя игрока и приветствует его.
@@ -40,7 +39,7 @@ const generateExpression = () => {
 //  Если неверный — выводится правильный ответ и сообщение об окончании игры.
 //  Если все ответы верны, поздравляет пользователя с победой.
 //  Игра завершится, если игрок даст неверный ответ.
-export const brainCalcGame = () => {
+const brainCalcGame = () => {
   const userName = greetUser();
   console.log('What is the result of the expression?');
 
@@ -55,10 +54,12 @@ export const brainCalcGame = () => {
 
     const isCorrect = compareAnswers(userAnswer, correctAnswer, userName);
     if (isCorrect === true) {
-        correctAnswersCount += 1;
+      correctAnswersCount += 1;
     } else {
-        return;
+      return;
     }
-    }
+  }
   console.log(`Congratulations, ${userName}!`);
 };
+
+export default brainCalcGame; 
