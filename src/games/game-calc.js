@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
-import { greetUser, getRandomInt } from '../src/cli.js';
-import compareAnswers from '../src/index.js';
+import { greetUser, getRandomInt } from '../../src/cli.js';
+import compareAnswers from '../../src/index.js';
 
 //  Функция generateExpression() - создаёт случайное математическое выражение.
 //  Она выбирает случайные числа и операцию (+, -, *), затем вычисляет правильный ответ.
