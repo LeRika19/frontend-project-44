@@ -4,7 +4,7 @@ import compareAnswers from '../index.js';
 
 //  Функция generateExpression() - создаёт случайное математическое выражение.
 //  Она выбирает случайные числа и операцию (+, -, *), затем вычисляет правильный ответ.
-const calculate = (number1, number2, oper) => {  
+const calculate = (number1, number2, oper) => {
   let result;
   switch (oper) {
     case '+':
@@ -29,13 +29,12 @@ const generateExpression = () => {
   const operators = ['+', '-', '*'];
   const operator = operators[getRandomInt(0, operators.length - 1)];
   const correctAnswer = calculate(num1, num2, operator);
-  
   return { expression: `${num1} ${operator} ${num2}`, correctAnswer };
 };
 
 //  Функция brainCalcGame():
 //  Выводит приветствие, запрашивает имя игрока и приветствует его.
-//  В цикле задаёт 3 вопроса. Если ответ верный, выводится "Correct!". 
+//  В цикле задаёт 3 вопроса. Если ответ верный, выводится "Correct!".
 //  Если неверный — выводится правильный ответ и сообщение об окончании игры.
 //  Если все ответы верны, поздравляет пользователя с победой.
 //  Игра завершится, если игрок даст неверный ответ.
@@ -62,4 +61,4 @@ const brainCalcGame = () => {
   console.log(`Congratulations, ${userName}!`);
 };
 
-export default brainCalcGame; 
+export default brainCalcGame;
