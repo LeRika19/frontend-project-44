@@ -33,7 +33,7 @@ const brainProgression = () => {
     console.log(`Question: ${progression.join(' ')}`);
 
     let userAnswer = readlineSync.question('Your answer: ');
-    userAnswer = parseInt(userAnswer, 10);   
+    userAnswer = parseInt(userAnswer, 10);
     const isCorrect = compareAnswers(userAnswer, correctAnswer, userName);
     if (isCorrect === true) {
       correctAnswersCount += 1;

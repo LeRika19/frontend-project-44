@@ -33,7 +33,7 @@ const playPrimeGame = () => {
     } else {
       correctAnswer = 'no';
     }
-    const userAnswer = readlineSync.question(`Question: ${randomNumber}\nYour answer:`);  
+    const userAnswer = readlineSync.question(`Question: ${randomNumber}\nYour answer:`);
     const isCorrect = compareAnswers(userAnswer, correctAnswer, userName);
     if (isCorrect === true) {
       correctAnswersCount += 1;
