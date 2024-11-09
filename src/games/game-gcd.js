@@ -7,8 +7,8 @@ import compareAnswers from '../index.js';
 //  то наибольший общий делитель равен другому числу. 
 //  Цикл продолжается до тех пор, пока num2 не станет равен нулю.)
 const calculateGcd = (num1, num2) => {
-  const newNum1 = num1;
-  const newNum2 = num2;
+  let newNum1 = num1;
+  let newNum2 = num2;
   while (newNum2 !== 0) {
     [newNum1, newNum2] = [newNum2, newNum1 % newNum2];
   }
