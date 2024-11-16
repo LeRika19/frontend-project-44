@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import { greetUser } from '../utils.js';
+import { greetUser } from '../src/utils.js';
 
 greetUser();
