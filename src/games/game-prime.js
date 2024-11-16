@@ -1,9 +1,6 @@
-import readlineSync from 'readline-sync';
-import { greetUser, getRandomInt } from '../cli.js';
-import compareAnswers from '../index.js';
+import { getRandomInt, roundsToWinCount } from '../utils.js';
+import { runGame } from '../index.js';
 
-//  Функция для проверки, является ли число простым
-//  Math.sqrt(num) проверяет есть ли у числа еще делители если нет то это простое число
 const isPrime = (num) => {
   if (num <= 1) return false;
 
@@ -16,33 +13,22 @@ const isPrime = (num) => {
   return true;
 };
 
-//  Функция для запуска игры
-const playPrimeGame = () => {
-  const userName = greetUser();
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
+export const runPrimeGame = () => {
+  let description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+  let questionsCollection = [];
 
-  let correctAnswersCount = 0;
-  const roundsToWin = 3;
-
-  while (correctAnswersCount < roundsToWin) {
+  let counter = 0;
+ 
+  while (counter < roundsToWinCount) {
     const randomNumber = getRandomInt(1, 100);
-    let correctAnswer;
-
-    if (isPrime(randomNumber)) {
-      correctAnswer = 'yes';
-    } else {
-      correctAnswer = 'no';
+    let correctAnswer = isPrime(randomNumber) ? "yes" : "no";
+    let round = {
+      question: randomNumber,
+      answer: correctAnswer
     }
-    const userAnswer = readlineSync.question(`Question: ${randomNumber}\nYour answer:`);
-    const isCorrect = compareAnswers(userAnswer, correctAnswer, userName);
-    if (isCorrect === true) {
-      correctAnswersCount += 1;
-    } else {
-      return;
-    }
+    questionsCollection.push(round);
+    counter += 1;
   }
 
-  console.log(`Congratulations, ${userName}!`);
+  runGame(description, questionsCollection);
 };
-
-export default playPrimeGame;

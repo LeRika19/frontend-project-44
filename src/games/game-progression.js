@@ -1,48 +1,37 @@
-import readlineSync from 'readline-sync';
-import { greetUser, getRandomInt } from '../cli.js';
-import compareAnswers from '../index.js';
+import { getRandomInt, roundsToWinCount } from '../utils.js';
+import { runGame } from '../index.js';
 
-//  Функция для генерации арифметической прогрессии
 const generateProgression = () => {
-  const start = getRandomInt(1, 10); // Начальное значение
-  const step = getRandomInt(1, 10); // Шаг прогрессии
-  const length = getRandomInt(5, 10); // Длина прогрессии (от 5 до 10)
+  const start = getRandomInt(1, 10);
+  const step = getRandomInt(1, 10);
+  const length = getRandomInt(5, 10);
 
   const progression = [];
   for (let i = 0; i < length; i += 1) {
     progression.push(start + i * step);
   }
 
-  //  Случайная позиция для замены числа
   const hiddenIndex = getRandomInt(0, length - 1);
   const hiddenValue = progression[hiddenIndex];
-  progression[hiddenIndex] = '..'; // Заменяем на две точки
+  progression[hiddenIndex] = '..';
   return { progression, hiddenValue };
 };
 
-//  Функция для игры
-const brainProgression = () => {
-  const userName = greetUser();
-  console.log('What number is missing in the progression?');
+export const runProgressionGame = () => {
+  let description = 'What number is missing in the progression?';
+  let questionsCollection = [];
 
-  let correctAnswersCount = 0;
-  const roundsToWin = 3;
-
-  while (correctAnswersCount < roundsToWin) {
+  let counter = 0;
+  
+  while (counter < roundsToWinCount) {
     const { progression, hiddenValue: correctAnswer } = generateProgression();
-    console.log(`Question: ${progression.join(' ')}`);
-
-    let userAnswer = readlineSync.question('Your answer: ');
-    userAnswer = parseInt(userAnswer, 10);
-    const isCorrect = compareAnswers(userAnswer, correctAnswer, userName);
-    if (isCorrect === true) {
-      correctAnswersCount += 1;
-    } else {
-      return;
+    let round = {
+      question: `${progression.join(' ')}`,
+      answer: correctAnswer
     }
+    questionsCollection.push(round);
+    counter += 1;
   }
 
-  console.log(`Congratulations, ${userName}!`);
+  runGame(description, questionsCollection);
 };
-
-export default brainProgression;

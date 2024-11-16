@@ -1,15 +1,25 @@
-const compareAnswers = (userAnswer, correctAnswer, userName) => {
-  let result;
-  if (userAnswer === correctAnswer) {
-    console.log('Correct!');
-    result = true;
-  } else {
-    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-    console.log(`Let's try again, ${userName}!`);
-    result = false;
+import { greetUser, compareAnswers, roundsToWinCount } from './utils.js';
+import readlineSync from 'readline-sync';
+
+export const runGame = (description, questionsCollection) => {
+  const userName = greetUser();
+  console.log(description);
+
+  let correctAnswersCount = 0;
+  let counter = 0;
+
+  while (correctAnswersCount < roundsToWinCount) {
+    console.log(`Question: ${questionsCollection[counter].question}`);
+    let userAnswer = readlineSync.question('Your answer: ').toLowerCase();
+    const isCorrect = compareAnswers(userAnswer, questionsCollection[counter].answer, userName);
+    counter += 1;
+    if (isCorrect === true) {
+      correctAnswersCount += 1;
+    } else {
+      return;
+    }
   }
 
-  return result;
+  console.log(`Congratulations, ${userName}!`);
 };
 
-export default compareAnswers;
