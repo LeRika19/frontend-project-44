@@ -1,6 +1,5 @@
 import readlineSync from 'readline-sync';
-import { compareAnswers, roundsToWinCount } from './utils.js';
-import greetUser from './utils.js';
+import greetUser, { compareAnswers, roundsToWinCount } from './utils.js';
 
 const runGame = (description, questionsCollection) => {
   const userName = greetUser();

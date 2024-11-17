@@ -7,7 +7,6 @@ const runEvenGame = () => {
   const description = 'Answer "yes" if the number is even, otherwise answer "no".';
   const questionsCollection = [];
   let counter = 0;
-  
   while (counter < roundsToWinCount) {
     const randomNumber = getRandomInt(1, 100);
     const correctAnswer = isEven(randomNumber) ? 'yes' : 'no';

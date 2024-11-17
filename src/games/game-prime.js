@@ -17,7 +17,6 @@ const runPrimeGame = () => {
   const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
   const questionsCollection = [];
   let counter = 0;
- 
   while (counter < roundsToWinCount) {
     const randomNumber = getRandomInt(1, 100);
     const correctAnswer = isPrime(randomNumber) ? 'yes' : 'no';

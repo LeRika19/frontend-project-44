@@ -35,7 +35,6 @@ const runCalcGame = () => {
   const description = 'What is the result of the expression?';
   const questionsCollection = [];
   let counter = 0;
-  
   while (counter < roundsToWinCount) {
     const { expression, correctAnswer } = generateExpression();
     const round = {
@@ -47,6 +46,5 @@ const runCalcGame = () => {
   }
 
   runGame(description, questionsCollection);
-};
-  
+};  
 export default runCalcGame;

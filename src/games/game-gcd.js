@@ -14,7 +14,6 @@ const runGcdGame = () => {
   const description = 'Find the greatest common divisor of given numbers.';
   const questionsCollection = [];
   let counter = 0;
-  
   while (counter < roundsToWinCount) {
     const num1 = getRandomInt(1, 100);
     const num2 = getRandomInt(1, 100);

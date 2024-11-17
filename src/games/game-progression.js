@@ -21,7 +21,6 @@ const runProgressionGame = () => {
   const description = 'What number is missing in the progression?';
   const questionsCollection = [];
   let counter = 0;
-  
   while (counter < roundsToWinCount) {
     const { progression, hiddenValue: correctAnswer } = generateProgression();
     const round = {

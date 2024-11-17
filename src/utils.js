@@ -7,15 +7,18 @@ const greetUser = () => {
   return userName;
 };
 export default greetUser;
-  
 export const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 export const compareAnswers = (userAnswer, correctAnswer, userName) => {
   let result;
+  let answer;
   if (typeof correctAnswer === 'number') {
-    userAnswer = parseInt(userAnswer, 10);
+    answer = parseInt(userAnswer, 10);  
+  } else {
+    answer = userAnswer;
   }
-  if (userAnswer === correctAnswer) {
+
+  if (answer === correctAnswer) {
     console.log('Correct!');
     result = true;
   } else {
