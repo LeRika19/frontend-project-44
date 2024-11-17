@@ -1,5 +1,5 @@
 import { getRandomInt, roundsToWinCount } from '../utils.js';
-import { runGame } from '../index.js';
+import runGame from '../index.js';
 
 const generateProgression = () => {
   const start = getRandomInt(1, 10);
@@ -17,21 +17,21 @@ const generateProgression = () => {
   return { progression, hiddenValue };
 };
 
-export const runProgressionGame = () => {
-  let description = 'What number is missing in the progression?';
-  let questionsCollection = [];
-
+const runProgressionGame = () => {
+  const description = 'What number is missing in the progression?';
+  const questionsCollection = [];
   let counter = 0;
   
   while (counter < roundsToWinCount) {
     const { progression, hiddenValue: correctAnswer } = generateProgression();
-    let round = {
+    const round = {
       question: `${progression.join(' ')}`,
-      answer: correctAnswer
-    }
+      answer: correctAnswer,
+    };
     questionsCollection.push(round);
     counter += 1;
   }
 
   runGame(description, questionsCollection);
 };
+export default runProgressionGame;

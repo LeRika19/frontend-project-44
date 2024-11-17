@@ -1,5 +1,6 @@
 import { getRandomInt, roundsToWinCount } from '../utils.js';
-import { runGame } from '../index.js';
+import runGame from '../index.js';
+
 const operators = ['+', '-', '*'];
 
 const calculate = (number1, number2, oper) => {
@@ -30,21 +31,22 @@ const generateExpression = () => {
   return { expression: `${num1} ${operator} ${num2}`, correctAnswer };
 };
 
-export const runCalcGame = () => {
-  let description = 'What is the result of the expression?';
-  let questionsCollection = [];
-  
+const runCalcGame = () => {
+  const description = 'What is the result of the expression?';
+  const questionsCollection = [];
   let counter = 0;
   
   while (counter < roundsToWinCount) {
-    let { expression, correctAnswer } = generateExpression();
-    let round = {
+    const { expression, correctAnswer } = generateExpression();
+    const round = {
       question: expression,
-      answer: correctAnswer
-    }
+      answer: correctAnswer,
+    };
     questionsCollection.push(round);
     counter += 1;
   }
 
   runGame(description, questionsCollection);
 };
+  
+export default runCalcGame;

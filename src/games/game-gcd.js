@@ -1,5 +1,5 @@
 import { getRandomInt, roundsToWinCount } from '../utils.js';
-import { runGame } from '../index.js';
+import runGame from '../index.js';
 
 const calculateGcd = (num1, num2) => {
   let newNum1 = num1;
@@ -10,23 +10,23 @@ const calculateGcd = (num1, num2) => {
   return newNum1;
 };
 
-export const runGcdGame = () => {
-  let description = 'Find the greatest common divisor of given numbers.';
-  let questionsCollection = [];
-
+const runGcdGame = () => {
+  const description = 'Find the greatest common divisor of given numbers.';
+  const questionsCollection = [];
   let counter = 0;
   
   while (counter < roundsToWinCount) {
     const num1 = getRandomInt(1, 100);
     const num2 = getRandomInt(1, 100);
     const correctAnswer = calculateGcd(num1, num2);
-    let round = {
+    const round = {
       question: `${num1} ${num2}`,
-      answer: correctAnswer
-    }
+      answer: correctAnswer,
+    };
     questionsCollection.push(round);
     counter += 1;
   }
 
   runGame(description, questionsCollection);
 };
+export default runGcdGame;
