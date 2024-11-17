@@ -46,5 +46,5 @@ const runCalcGame = () => {
   }
 
   runGame(description, questionsCollection);
-};  
+};
 export default runCalcGame;

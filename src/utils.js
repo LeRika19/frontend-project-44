@@ -13,7 +13,7 @@ export const compareAnswers = (userAnswer, correctAnswer, userName) => {
   let result;
   let answer;
   if (typeof correctAnswer === 'number') {
-    answer = parseInt(userAnswer, 10);  
+    answer = parseInt(userAnswer, 10);
   } else {
     answer = userAnswer;
   }
