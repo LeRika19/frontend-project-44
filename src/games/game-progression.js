@@ -1,6 +1,5 @@
-import { getRandomInt } from '../utils.js';
-import { roundsToWinCount } from '../index.js';
-import runGame from '../index.js';
+import getRandomInt from '../utils.js';
+import runGame, { roundsToWinCount } from '../index.js';
 
 const generateRound = () => {
   const start = getRandomInt(1, 10);
@@ -18,7 +17,7 @@ const generateRound = () => {
   return {
     question: `${progression.join(' ')}`,
     answer: hiddenValue,
-  }
+  };
 };
 
 const runProgressionGame = () => {

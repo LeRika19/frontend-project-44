@@ -1,6 +1,5 @@
-import { getRandomInt } from '../utils.js';
-import { roundsToWinCount } from '../index.js';
-import runGame from '../index.js';
+import getRandomInt from '../utils.js';
+import runGame, { roundsToWinCount } from '../index.js';
 
 const calculateGcd = (num1, num2) => {
   let newNum1 = num1;
@@ -17,7 +16,7 @@ const generateRound = () => {
   return {
     question: `${num1} ${num2}`,
     answer: calculateGcd(num1, num2).toString(),
-  }
+  };
 };
 
 const runGcdGame = () => {

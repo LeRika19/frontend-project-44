@@ -1,6 +1,5 @@
-import { getRandomInt } from '../utils.js';
-import { roundsToWinCount } from '../index.js';
-import runGame from '../index.js';
+import getRandomInt from '../utils.js';
+import runGame, { roundsToWinCount } from '../index.js';
 
 const isPrime = (num) => {
   if (num <= 1) return false;
@@ -19,7 +18,7 @@ const generateRound = () => {
   return {
     question: randomNumber,
     answer: isPrime(randomNumber) ? 'yes' : 'no',
-  }
+  };
 };
 
 const runPrimeGame = () => {

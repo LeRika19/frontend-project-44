@@ -1,6 +1,5 @@
-import { getRandomInt } from '../utils.js';
-import { roundsToWinCount } from '../index.js';
-import runGame from '../index.js';
+import getRandomInt from '../utils.js';
+import runGame, { roundsToWinCount } from '../index.js';
 
 const operators = ['+', '-', '*'];
 
@@ -17,7 +16,7 @@ const calculate = (number1, number2, oper) => {
       result = number1 * number2;
       break;
     default:
-      throw new Error('Error: Unknown calculate!')
+      throw new Error('Error: Unknown calculate!');
   }
   return result;
 };
@@ -32,8 +31,8 @@ const generateRound = () => {
   return {
     question: `${num1} ${operator} ${num2}`,
     answer: correctAnswer,
-  }
-}
+  };
+};
 
 const runCalcGame = () => {
   const description = 'What is the result of the expression?';

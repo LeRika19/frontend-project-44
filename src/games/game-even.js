@@ -1,6 +1,5 @@
-import { getRandomInt } from '../utils.js';
-import { roundsToWinCount } from '../index.js';
-import runGame from '../index.js';
+import getRandomInt from '../utils.js';
+import runGame, { roundsToWinCount } from '../index.js';
 
 const isEven = (num) => num % 2 === 0;
 
@@ -9,7 +8,7 @@ const generateRound = () => {
   return {
     question: randomNumber,
     answer: isEven(randomNumber) ? 'yes' : 'no',
-  }
+  };
 };
 
 const runEvenGame = () => {
