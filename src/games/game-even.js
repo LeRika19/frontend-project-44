@@ -5,8 +5,9 @@ import runGame from '../index.js';
 const isEven = (num) => num % 2 === 0;
 
 const generateRound = () => {
+  const randomNumber = getRandomInt(1, 100);
   return {
-    question: getRandomInt(1, 100),
+    question: randomNumber,
     answer: isEven(randomNumber) ? 'yes' : 'no',
   }
 };
