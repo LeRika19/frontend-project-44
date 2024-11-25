@@ -1,4 +1,5 @@
-import { getRandomInt, roundsToWinCount } from '../utils.js';
+import { getRandomInt } from '../utils.js';
+import { roundsToWinCount } from '../index.js';
 import runGame from '../index.js';
 
 const isPrime = (num) => {
@@ -13,21 +14,20 @@ const isPrime = (num) => {
   return true;
 };
 
+const generateRound = () => {
+  return {
+    question: getRandomInt(1, 100),
+    answer: isPrime(randomNumber) ? 'yes' : 'no',
+  }
+};
+
 const runPrimeGame = () => {
   const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-  const questionsCollection = [];
-  let counter = 0;
-  while (counter < roundsToWinCount) {
-    const randomNumber = getRandomInt(1, 100);
-    const correctAnswer = isPrime(randomNumber) ? 'yes' : 'no';
-    const round = {
-      question: randomNumber,
-      answer: correctAnswer,
-    };
-    questionsCollection.push(round);
-    counter += 1;
+  const rounds = [];
+  for (let i = 0; i < roundsToWinCount; i += 1) {
+    rounds.push(generateRound());
   }
 
-  runGame(description, questionsCollection);
+  runGame(description, rounds);
 };
 export default runPrimeGame;

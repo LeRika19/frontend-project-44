@@ -1,23 +1,23 @@
-import { getRandomInt, roundsToWinCount } from '../utils.js';
+import { getRandomInt } from '../utils.js';
+import { roundsToWinCount } from '../index.js';
 import runGame from '../index.js';
 
 const isEven = (num) => num % 2 === 0;
 
+const generateRound = () => {
+  return {
+    question: getRandomInt(1, 100),
+    answer: isEven(randomNumber) ? 'yes' : 'no',
+  }
+};
+
 const runEvenGame = () => {
   const description = 'Answer "yes" if the number is even, otherwise answer "no".';
-  const questionsCollection = [];
-  let counter = 0;
-  while (counter < roundsToWinCount) {
-    const randomNumber = getRandomInt(1, 100);
-    const correctAnswer = isEven(randomNumber) ? 'yes' : 'no';
-    const round = {
-      question: randomNumber,
-      answer: correctAnswer,
-    };
-    questionsCollection.push(round);
-    counter += 1;
+  const rounds = [];
+  for (let i = 0; i < roundsToWinCount; i += 1) {
+    rounds.push(generateRound());
   }
 
-  runGame(description, questionsCollection);
+  runGame(description, rounds);
 };
 export default runEvenGame;

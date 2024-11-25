@@ -1,25 +1,25 @@
 import readlineSync from 'readline-sync';
-import greetUser, { compareAnswers, roundsToWinCount } from './utils.js';
 
-const runGame = (description, questionsCollection) => {
-  const userName = greetUser();
+const runGame = (description, rounds) => {
+  console.log('Welcome to the Brain Games!');
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
   console.log(description);
 
-  let correctAnswersCount = 0;
-  let counter = 0;
-
-  while (correctAnswersCount < roundsToWinCount) {
-    console.log(`Question: ${questionsCollection[counter].question}`);
+  for (const round of rounds) {
+    console.log(`Question: ${round.question}`);
     const userAnswer = readlineSync.question('Your answer: ').toLowerCase();
-    const isCorrect = compareAnswers(userAnswer, questionsCollection[counter].answer, userName);
-    counter += 1;
-    if (isCorrect === true) {
-      correctAnswersCount += 1;
+    if (userAnswer === round.answer) {
+      console.log('Correct!');
     } else {
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${round.answer}'.`);
+      console.log(`Let's try again, ${userName}!`);
       return;
     }
-  }
+  };
 
   console.log(`Congratulations, ${userName}!`);
 };
 export default runGame;
+
+export const roundsToWinCount = 3;

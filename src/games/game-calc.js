@@ -1,4 +1,5 @@
-import { getRandomInt, roundsToWinCount } from '../utils.js';
+import { getRandomInt } from '../utils.js';
+import { roundsToWinCount } from '../index.js';
 import runGame from '../index.js';
 
 const operators = ['+', '-', '*'];
@@ -16,35 +17,31 @@ const calculate = (number1, number2, oper) => {
       result = number1 * number2;
       break;
     default:
-      result = null;
-      break;
+      throw new Error('Error: Unknown calculate!')
   }
   return result;
 };
 
-const generateExpression = () => {
+const generateRound = () => {
   const num1 = getRandomInt(1, 50);
   const num2 = getRandomInt(1, 50);
 
   const operator = operators[getRandomInt(0, operators.length - 1)];
-  const correctAnswer = calculate(num1, num2, operator);
-  return { expression: `${num1} ${operator} ${num2}`, correctAnswer };
-};
+  const correctAnswer = calculate(num1, num2, operator).toString();
+
+  return {
+    question: `${num1} ${operator} ${num2}`,
+    answer: correctAnswer,
+  }
+}
 
 const runCalcGame = () => {
   const description = 'What is the result of the expression?';
-  const questionsCollection = [];
-  let counter = 0;
-  while (counter < roundsToWinCount) {
-    const { expression, correctAnswer } = generateExpression();
-    const round = {
-      question: expression,
-      answer: correctAnswer,
-    };
-    questionsCollection.push(round);
-    counter += 1;
+  const rounds = [];
+  for (let i = 0; i < roundsToWinCount; i += 1) {
+    rounds.push(generateRound());
   }
 
-  runGame(description, questionsCollection);
+  runGame(description, rounds);
 };
 export default runCalcGame;
