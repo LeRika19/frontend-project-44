@@ -3,8 +3,9 @@ import runGame, { roundsToWinCount } from '../index.js';
 
 const isPrime = (num) => {
   if (num <= 1) return false;
+  const numberOfChecks = Math.sqrt(num);
 
-  for (let i = 2; i <= Math.sqrt(num); i += 1) {
+  for (let i = 2; i <= numberOfChecks; i += 1) {
     if (num % i === 0) {
       return false;
     }
@@ -16,7 +17,7 @@ const isPrime = (num) => {
 const generateRound = () => {
   const randomNumber = getRandomInt(1, 100);
   return {
-    question: randomNumber,
+    question: randomNumber.toString(),
     answer: isPrime(randomNumber) ? 'yes' : 'no',
   };
 };

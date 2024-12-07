@@ -9,15 +9,16 @@ const runGame = (description, rounds) => {
   console.log(description);
 
   for (let i = 0; i < roundsToWinCount; i += 1) {
-    console.log(`Question: ${rounds[i].question}`);
+    const { question, answer: correctAnswer } = rounds[i];
+    console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ').toLowerCase();
-    if (userAnswer === rounds[i].answer) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rounds[i].answer}'.`);
+    if (userAnswer !== correctAnswer) {
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
       console.log(`Let's try again, ${userName}!`);
-      return;
+      return;  
     }
+
+    console.log('Correct!');
   }
 
   console.log(`Congratulations, ${userName}!`);

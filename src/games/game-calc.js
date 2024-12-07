@@ -3,20 +3,16 @@ import runGame, { roundsToWinCount } from '../index.js';
 
 const operators = ['+', '-', '*'];
 
-const calculate = (number1, number2, oper) => {
-  let result;
-  switch (oper) {
+const calculate = (number1, number2, operator) => {
+  switch (operator) {
     case '+':
-      result = number1 + number2;
-      break;
+      return number1 + number2;
     case '-':
-      result = number1 - number2;
-      break;
+      return number1 - number2;
     case '*':
-      result = number1 * number2;
-      break;
+      return number1 * number2;
     default:
-      throw new Error('Error: Unknown calculate!');
+      throw new Error(`Unknown operator ${operator}!`);
   }
   return result;
 };

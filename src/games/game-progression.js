@@ -1,16 +1,20 @@
 import getRandomInt from '../utils.js';
 import runGame, { roundsToWinCount } from '../index.js';
 
-const generateRound = () => {
+const getProgression = (length) => {
   const start = getRandomInt(1, 10);
   const step = getRandomInt(1, 10);
-  const length = getRandomInt(5, 10);
-
   const progression = [];
   for (let i = 0; i < length; i += 1) {
     progression.push(start + i * step);
   }
 
+  return progression;
+}
+
+const generateRound = () => {
+  const length = getRandomInt(5, 10);
+  const progression = getProgression(length);
   const hiddenIndex = getRandomInt(0, length - 1);
   const hiddenValue = progression[hiddenIndex].toString();
   progression[hiddenIndex] = '..';
