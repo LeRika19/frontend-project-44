@@ -14,7 +14,6 @@ const calculate = (number1, number2, operator) => {
     default:
       throw new Error(`Unknown operator ${operator}!`);
   }
-  return result;
 };
 
 const generateRound = () => {
