@@ -1,9 +1,9 @@
 import getRandomInt from '../utils.js';
 import runGame, { roundsToWinCount } from '../index.js';
 
-const getProgression = (length) => {
-  const start = getRandomInt(1, 10);
-  const step = getRandomInt(1, 10);
+const description = 'What number is missing in the progression?';
+
+const getProgression = (start, step, length) => {
   const progression = [];
   for (let i = 0; i < length; i += 1) {
     progression.push(start + i * step);
@@ -13,24 +13,20 @@ const getProgression = (length) => {
 };
 
 const generateRound = () => {
+  const start = getRandomInt(1, 10);
+  const step = getRandomInt(1, 10);
   const length = getRandomInt(5, 10);
-  const progression = getProgression(length);
+  const progression = getProgression(start, step, length);
   const hiddenIndex = getRandomInt(0, progression.length - 1);
-  const hiddenValue = progression[hiddenIndex].toString();
+  const missingNumber = progression[hiddenIndex].toString();
   progression[hiddenIndex] = '..';
   return {
     question: `${progression.join(' ')}`,
-    answer: hiddenValue,
+    answer: missingNumber,
   };
 };
 
 const runProgressionGame = () => {
-  const description = 'What number is missing in the progression?';
-  const rounds = [];
-  for (let i = 0; i < roundsToWinCount; i += 1) {
-    rounds.push(generateRound());
-  }
-
-  runGame(description, rounds);
+  runGame(description, generateRound, roundsToWinCount);
 };
 export default runProgressionGame;
