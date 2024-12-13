@@ -4,10 +4,12 @@ import runGame, { roundsToWinCount } from '../index.js';
 const description = 'Find the greatest common divisor of given numbers.';
 
 const calculateGcd = (number1, number2) => {
-  while (number2 !== 0) {
-    [number1, number2] = [number2, number1 % number2];
+  let current = number1;
+  let remainder = number2;
+  while (remainder !== 0) {
+    [current, remainder] = [remainder, current % remainder];
   }
-  return number1;
+  return current;
 };
 
 const generateRound = () => {
